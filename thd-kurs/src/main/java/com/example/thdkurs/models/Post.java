@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Collection;
+import java.util.LinkedHashSet;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -20,5 +23,7 @@ public class Post {
     private String name;
 
     @Column(name = "Bet")
-    private String bet;
+    private Integer bet;
+    @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
+    private Collection<Client> employee = new LinkedHashSet<>();
 }

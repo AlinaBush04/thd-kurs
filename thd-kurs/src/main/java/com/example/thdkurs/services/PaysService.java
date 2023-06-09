@@ -2,7 +2,7 @@ package com.example.thdkurs.services;
 
 
 import com.example.thdkurs.models.Pays;
-import com.example.thdkurs.repository.PaysRepos\;
+import com.example.thdkurs.repository.PaysRepos;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;

@@ -5,8 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.Collection;
+import java.util.LinkedHashSet;
 
 @Getter
 @Setter
@@ -22,8 +22,19 @@ public class Employee {
     @Column(name = "Full_name")
     private String full_name;
 
-    @Column(name = "Post_id")
-    private Integer post_id;
+    @ManyToOne
+    private Post post;
 
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.REMOVE)
+    private Collection<Client> client = new LinkedHashSet<>();
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.REMOVE)
+    private Collection<Client> commit = new LinkedHashSet<>();
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.REMOVE)
+    private Collection<Client> pays = new LinkedHashSet<>();
+
+    public Employee(String fullName, Post post) {
+        this.full_name = fullName;
+        this.post = post;
+    }
 }
 

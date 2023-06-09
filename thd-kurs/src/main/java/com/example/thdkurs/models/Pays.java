@@ -19,8 +19,8 @@ public class Pays {
     private Integer id;
     @Column(name = "Data")
     private Date data;
-    @Column(name = "Tax_id")
-    private Integer tax_id;
-    @Column(name = "Employee_id")
-    private Integer employee_id;
+    @ManyToOne
+    private Tax tax;
+    @ManyToOne
+    private Employee employee;
 }

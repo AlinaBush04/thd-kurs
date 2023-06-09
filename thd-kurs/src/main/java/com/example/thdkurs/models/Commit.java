@@ -17,10 +17,10 @@ public class Commit {
     private Integer id;
     @Column(name = "Bonus")
     private Integer bonus;
-    @Column(name = "Deal_id")
-    private Integer deal_id;
-    @Column(name = "Emloyee_id")
-    private Integer emloyee_id;
-    @Column(name = "Client_id")
-    private Integer client_id;
+    @ManyToOne
+    private Deal deal;
+    @ManyToOne
+    private Employee employee;
+    @ManyToOne
+    private Client client;
 }

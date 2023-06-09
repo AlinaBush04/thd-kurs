@@ -1,5 +1,6 @@
 package com.example.thdkurs.services;
 
+import com.example.thdkurs.models.Post;
 import com.example.thdkurs.models.Tax;
 import com.example.thdkurs.repository.TaxRepos;
 import org.springframework.stereotype.Service;
@@ -8,7 +9,8 @@ import java.util.List;
 import java.util.Optional;
 @Service
 public class TaxService {
-    TaxRepos taxRepos;
+
+    private static TaxRepos taxRepos;
     public TaxService(TaxRepos taxRepos){
         this.taxRepos = taxRepos;
     }
@@ -21,7 +23,29 @@ public class TaxService {
     public void deleteById(int id){
         taxRepos.deleteById(id);
     }
-    public void save(Tax tax){
-        taxRepos.save(tax);
+    public void create(Integer tax_deduction) {
+        Optional<Tax> taxOptional = taxRepos.findById(id);
+        if (taxOptional.isPresent()) {
+            Tax tax = new Tax(tax_deduction);
+            taxRepos.save(tax);
+        }
+
+    }
+
+    public Object read(int id) {
+        Optional<Tax> taxOptional = taxRepos.findById(id);
+        if (taxOptional.isPresent()) {
+            return taxOptional.get();
+        }
+        return null;
+    }
+
+    public void update(int id, Integer tax_deduction) {
+        Optional<Tax> taxOptional = taxRepos.findById(id);
+        if (taxOptional.isPresent()) {
+            Tax tax = taxOptional.get();
+            tax.setTax_deduction(tax_deduction;
+            taxRepos.save(tax);
+        }
     }
 }

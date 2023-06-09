@@ -5,7 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Collection;
 import java.util.Date;
+import java.util.LinkedHashSet;
 
 @Getter
 @Setter
@@ -22,5 +24,7 @@ public class Deal {
     @Column(name = "Data")
     private Date data;
     @Column(name = "Profit")
-    private int profit;
+    private Integer profit;
+    @OneToMany(mappedBy = "deal", cascade = CascadeType.REMOVE)
+    private Collection<Client> commit = new LinkedHashSet<>();
 }

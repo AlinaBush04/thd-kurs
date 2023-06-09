@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Collection;
+import java.util.LinkedHashSet;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -17,8 +20,13 @@ public class Client {
     private Integer id;
     @Column(name = "Full_name")
     private String full_name;
+    @ManyToOne
+    private Employee employee;
+    @OneToMany(mappedBy = "client", cascade = CascadeType.REMOVE)
+    private Collection<Client> commit = new LinkedHashSet<>();
 
-    @Column(name = "Employee_id;")
-    private Integer employee_id;;
-
+    public Client (String fullName, Employee employee) {
+        this.full_name = fullName;
+        this.employee = employee;
+    }
 }
