@@ -27,4 +27,10 @@ public class Deal {
     private Integer profit;
     @OneToMany(mappedBy = "deal", cascade = CascadeType.REMOVE)
     private Collection<Client> commit = new LinkedHashSet<>();
+
+    public Deal (String name, Date data, Integer profit) {
+        this.name = name;
+        this.data = data;
+        this.profit = profit;
+    }
 }

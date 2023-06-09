@@ -23,4 +23,6 @@ public class Pays {
     private Tax tax;
     @ManyToOne
     private Employee employee;
+
+
 }

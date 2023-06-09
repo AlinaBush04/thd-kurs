@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.LinkedHashSet;
 
 @Getter
@@ -22,5 +23,7 @@ public class Tax {
     private Integer tax_deduction;
     @OneToMany(mappedBy = "tax", cascade = CascadeType.REMOVE)
     private Collection<Client> pays = new LinkedHashSet<>();
-
+    public Tax (Integer tax_deduction) {
+        this.tax_deduction = tax_deduction;
+    }
 }

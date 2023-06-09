@@ -26,4 +26,8 @@ public class Post {
     private Integer bet;
     @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
     private Collection<Client> employee = new LinkedHashSet<>();
+    public Post (String name, Integer bet) {
+        this.name = name;
+        this.bet = bet;
+    }
 }

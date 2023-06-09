@@ -52,5 +52,5 @@ public class DealService {
             dealRepos.save(deal);
         }
     }
-    }
+
 }
